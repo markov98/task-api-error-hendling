@@ -45,7 +45,7 @@ export const editItem = (id: string, name: string) => {
     }
 
     item.name = name;
-    return item;
+    return 'Item successfully edited!';
 };
 
 export const deleteItem = (id: string) => {
@@ -55,6 +55,6 @@ export const deleteItem = (id: string) => {
     }
 
     items.splice(index, 1)[0];
-    
+
     return 'Item successfully deleted!';
 };
