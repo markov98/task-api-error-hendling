@@ -5,8 +5,8 @@
 ## Setup
 
 ```bash
-git clone https://github.com/markov98/task-simple-in-memory-api-for-item-manegement.git
-cd task-simple-in-memory-api-for-item-manegement
+git clone https://github.com/markov98/task-api-error-hendling
+cd task-api-error-hendling
 npm install
 npm run build
 npm run start
@@ -25,4 +25,12 @@ Requires a JSON body in the format:
 ```json
 { "name": "Item Name" }
 ```
-Returns the created item, including its generated **id**.
+Returns the created item, including its generated **id**.<br>
+**/items/:id**
+**GET** - Returns single item by id.<br>
+**PUT** - Edits an item by id.
+Requires a JSON body in the format:
+```json
+{ "name": "Item Name" }
+```
+**DELETE** - Deletes an item by id.
