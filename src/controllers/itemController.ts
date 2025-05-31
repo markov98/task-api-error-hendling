@@ -1,23 +1,20 @@
 import express, { Router } from 'express';
-import { Item } from '../models/item';
-import { v4 as uuidv4 } from 'uuid';
+import * as itemService from '../services/itemService';
 
 const router: Router = express.Router();
-const items: Item[] = [];
 
 // Routes
 router.get('/', (req, res) => {
-    res.status(200).json(items);
+    res.status(200).json(itemService.getItems());
 });
 
 router.post('/', (req, res) => {
-    const { name } = req.body;
-    if (!name) {
-        res.status(400).json({ message: 'Name is required' });
-    } else {
-        const newItem: Item = { id: uuidv4(), name };
-        items.push(newItem);
-        res.status(201).json(newItem);
+    try {
+        res.status(201).json(itemService.addItem(req.body.name));
+    } catch (err) {
+        res.status(400).json(err instanceof Error ?
+                {'error': err.message} : {'error': 'An unknown error occured.'}
+        )
     }
 });
 
